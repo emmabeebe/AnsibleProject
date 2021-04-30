@@ -1,5 +1,5 @@
 ---
-- hosts: webservers
+- hosts: jenkinsserver
   become: true
   tasks:
     - name: Running mvn clean
@@ -12,6 +12,9 @@
       debug:
         var: mvn_result
 
+- hosts: webserver
+  become: true
+  tasks:
     - name: install apache2
       apt: name=apache2 update_cache=yes state=latest
 
