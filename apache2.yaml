@@ -2,6 +2,14 @@
 - hosts: webservers
   become: true
   tasks:
+    - name: Running mvn clean
+      shell: "mvn clean install"
+      register: mvn_result
+
+    - name: "mvn clean task output"
+      debug:
+        var: mvn_result
+
     - name: install apache2
       apt: name=apache2 update_cache=yes state=latest
 
