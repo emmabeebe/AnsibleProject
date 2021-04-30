@@ -4,6 +4,8 @@
   tasks:
     - name: Running mvn clean
       shell: "mvn clean install"
+      args:
+        chdir: "~/Desktop/AnsibleProject/"
       register: mvn_result
 
     - name: "mvn clean task output"
